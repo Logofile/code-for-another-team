@@ -1,0 +1,28 @@
+{
+  "name": "s24swe6673-sprint1",
+  "version": "0.1.0",
+  "description": "Tests cases for first sprint for Image2Terminal",
+  "main": "index.ts",
+  "scripts": {
+    "render": "npx ts-node ./src/index.ts",
+    "test": "jest"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.24",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "merge": "^2.1.1",
+    "mocha": "^10.3.0",
+    "ts-jest": "^29.1.2",
+    "tsx": "^4.7.1"
+  },
+  "dependencies": {
+    "assert": "^2.1.0",
+    "path-browserify": "^1.0.1",
+    "ts-node": "^10.9.2",
+    "yargs": "^17.7.2"
+  }
+}
