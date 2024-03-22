@@ -17,10 +17,10 @@ describe("CLI", () => {
   describe("Fails when incompatible options are used together", () => {
     describe("Palette", () => {
       it("--grayscale and --duotone", (done) => {
-        execute(["--grayscale", "--duotone"], (errorMessage) => {
+        execute(["--grayscale", "--duotone"], (errorMessage, stdout, stderr) => {
           try {
             expect(
-              errorMessage.match(
+              stderr.match(
                 new RegExp(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE, "i")
               )
             ).toBeTruthy();
@@ -31,10 +31,18 @@ describe("CLI", () => {
         });
       });
       it("--grayscale and --color", (done) => {
-        execute(["--grayscale", "--color"], (errorMessage) => {
-          try {
+        execute(["--grayscale", "--color"], (error, stdout, stderr) => {
+          // console.log('output', output);
+          // console.log('errorMessage', stderr);
+          console.log("bruh")
+          console.log("bruh", ERROR_MESSAGES)
+          console.log("bruh", ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE)
+          console.log("bruh5", stderr.match(
+            new RegExp(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE, "i")
+          ))
+            try {
             expect(
-              errorMessage.match(
+              stderr.match(
                 new RegExp(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE, "i")
               )
             ).toBeTruthy();
@@ -45,10 +53,10 @@ describe("CLI", () => {
         });
       });
       it("--duotone and --color", (done) => {
-        execute(["--duotone", "--color"], (errorMessage) => {
+        execute(["--duotone", "--color"], (error, stdout, stderr) => {
           try {
             expect(
-              errorMessage.match(
+              stderr.match(
                 new RegExp(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE, "i")
               )
             ).toBeTruthy();
@@ -61,10 +69,10 @@ describe("CLI", () => {
     });
     describe("Rotation", () => {
       it("--rotate-90d and --rotate-180d", (done) => {
-        execute(["--rotate-90d", "--rotate-180d"], (errorMessage) => {
+        execute(["--rotate-90d", "--rotate-180d"], (error, stdout, stderr) => {
           try {
             expect(
-              errorMessage.match(
+              stderr.match(
                 new RegExp(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION, "i")
               )
             ).toBeTruthy();
@@ -75,10 +83,10 @@ describe("CLI", () => {
         });
       });
       it("--rotate-180d and --rotate-270d", (done) => {
-        execute(["--rotate-180d", "--rotate-270d"], (errorMessage) => {
+        execute(["--rotate-180d", "--rotate-270d"], (error, stdout, stderr) => {
           try {
             expect(
-              errorMessage.match(
+              stderr.match(
                 new RegExp(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION, "i")
               )
             ).toBeTruthy();
@@ -89,10 +97,10 @@ describe("CLI", () => {
         });
       });
       it("--rotate-90d and --rotate-270d", (done) => {
-        execute(["--rotate-90d", "--rotate-270d"], (errorMessage) => {
+        execute(["--rotate-90d", "--rotate-270d"], (error, stdout, stderr) => {
           try {
             expect(
-              errorMessage.match(
+              stderr.match(
                 new RegExp(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION, "i")
               )
             ).toBeTruthy();
@@ -106,10 +114,10 @@ describe("CLI", () => {
   });
   describe("Fails when invalid values are used with CLI options", () => {
     it("Resolution is too large", (done) => {
-      execute(["--resolution 500x500"], (errorMessage) => {
+      execute(["--resolution 500x500"], (error, stdout, stderr) => {
         try {
           expect(
-            errorMessage.match(
+            stderr.match(
               new RegExp(ERROR_MESSAGES.UNSUPPORTED_RESOLUTION, "i")
             )
           ).toBeTruthy();
@@ -120,10 +128,10 @@ describe("CLI", () => {
       });
     });
     it("Resolution has a bad format", (done) => {
-      execute(["--resolution 500"], (errorMessage) => {
+      execute(["--resolution 500"], (error, stdout, stderr) => {
         try {
           expect(
-            errorMessage.match(
+            stderr.match(
               new RegExp(ERROR_MESSAGES.UNSUPPORTED_RESOLUTION, "i")
             )
           ).toBeTruthy();
@@ -134,10 +142,10 @@ describe("CLI", () => {
       });
     });
     it("Invalid block Id 0", (done) => {
-      execute(["--focus-on-block 0"], (errorMessage) => {
+      execute(["--focus-on-block 0"], (error, stdout, stderr) => {
         try {
           expect(
-            errorMessage.match(new RegExp(ERROR_MESSAGES.INVALID_BLOCK_ID, "i"))
+            stderr.match(new RegExp(ERROR_MESSAGES.INVALID_BLOCK_ID, "i"))
           ).toBeTruthy();
         } catch (error) {
           return done(error);
@@ -146,10 +154,10 @@ describe("CLI", () => {
       });
     });
     it("Invalid block Id 10", (done) => {
-      execute(["--focus-on-block 10"], (errorMessage) => {
+      execute(["--focus-on-block 10"], (error, stdout, stderr) => {
         try {
           expect(
-            errorMessage.match(new RegExp(ERROR_MESSAGES.INVALID_BLOCK_ID, "i"))
+            stderr.match(new RegExp(ERROR_MESSAGES.INVALID_BLOCK_ID, "i"))
           ).toBeTruthy();
         } catch (error) {
           return done(error);
@@ -158,10 +166,10 @@ describe("CLI", () => {
       });
     });
     it("Invalid block count 0", (done) => {
-      execute(["--divide-into-blocks 0"], (errorMessage) => {
+      execute(["--divide-into-blocks 0"], (error, stdout, stderr) => {
         try {
           expect(
-            errorMessage.match(
+            stderr.match(
               new RegExp(ERROR_MESSAGES.INVALID_BLOCK_COUNT, "i")
             )
           ).toBeTruthy();
@@ -172,10 +180,10 @@ describe("CLI", () => {
       });
     });
     it("Invalid block count 10", (done) => {
-      execute(["--divide-into-blocks 10"], (errorMessage) => {
+      execute(["--divide-into-blocks 10"], (error, stdout, stderr) => {
         try {
           expect(
-            errorMessage.match(
+            stderr.match(
               new RegExp(ERROR_MESSAGES.INVALID_BLOCK_COUNT, "i")
             )
           ).toBeTruthy();
