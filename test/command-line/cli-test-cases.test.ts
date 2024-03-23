@@ -18,7 +18,7 @@ describe("CLI", () => {
       it("--grayscale and --duotone", (done) => {
         execute(["--grayscale", "--duotone"], (errorMessage, stdout, stderr) => {
           try {
-            expect(
+            expect(   
               stderr.match(
                 new RegExp(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE, "i")
               )

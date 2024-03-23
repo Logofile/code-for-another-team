@@ -1,12 +1,15 @@
 // NPM Dependencies
 import command from "yargs";
 import { ERROR_MESSAGES } from "./constants";
+<<<<<<< HEAD
 
 // Setup command line
 console.error("does anybody see this err??")
 console.error("does anybody see this err??")
 console.log("does anybody see this??")
 console.log("does anybody see this??")
+=======
+>>>>>>> 74986c4 (Add "helpful" changes to the other team's code. This will not be)
 
 // Setup command line
 const cliArguments: any = command(process.argv)
