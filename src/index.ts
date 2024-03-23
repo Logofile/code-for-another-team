@@ -45,10 +45,10 @@ const cliArguments: any = command(process.argv)
     "Instructions on how to render an image in the terminal"
   )
   .example("$0 render -i relativePath", "Render image in the terminal")
-  .demandOption(
-    ["i"],
-    "Please provide input image file path with options -i or --image"
-  )
+  // .demandOption(
+  //   ["i"],
+  //   "Please provide input image file path with options -i or --image"
+  // )
   .epilog("copyright 2024 by Script Saviors").argv;
 
 if (cliArguments["image"]) {

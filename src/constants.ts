@@ -1,4 +1,4 @@
-export const ERROR_MESSAGES: any = {
+export const ERROR_MESSAGES = {
   INVALID_FILE_TYPE: "File type not supported",
   FILE_TOO_LARGE: "File is too large",
   FILE_NOT_ACCESSIBLE: "File not found or not accessible",
