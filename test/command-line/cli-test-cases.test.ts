@@ -1,7 +1,6 @@
 // Local dependencies
 import { ERROR_MESSAGES } from "../../src/constants";
 import { execute } from "../test-utils";
-
 // Test cases
 describe("CLI", () => {
   it("Returns a help menu when one is requested", (done) => {
@@ -19,7 +18,7 @@ describe("CLI", () => {
       it("--grayscale and --duotone", (done) => {
         execute(["--grayscale", "--duotone"], (errorMessage, stdout, stderr) => {
           try {
-            expect(   
+            expect(
               stderr.match(
                 new RegExp(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE, "i")
               )
@@ -32,7 +31,15 @@ describe("CLI", () => {
       });
       it("--grayscale and --color", (done) => {
         execute(["--grayscale", "--color"], (error, stdout, stderr) => {
-          try {
+          // console.log('output', output);
+          // console.log('errorMessage', stderr);
+          console.log("bruh")
+          console.log("bruh", ERROR_MESSAGES)
+          console.log("bruh", ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE)
+          console.log("bruh5", stderr.match(
+            new RegExp(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE, "i")
+          ))
+            try {
             expect(
               stderr.match(
                 new RegExp(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE, "i")
