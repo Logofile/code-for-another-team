@@ -51,7 +51,15 @@ const cliArguments: any = command(process.argv)
   .epilog("copyright 2024 by Script Saviors").argv;
 
 if (cliArguments["image"]) {
-  console.debug("MOCK result");// TODO: remove debug code and implement feature
+  // Check to see if incompatible options --rotate-90d and--rotate-270d are
+  // called together
+  if (cliArguments["rotate-90d"] && cliArguments["rotate-180d"]) {
+    // post an error message and exit  
+    console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION)
+    process.exit(1);
+  }
+
+  //console.debug("MOCK result");// TODO: remove debug code and implement feature
 } else {
   // TODO : implement
 }
