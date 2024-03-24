@@ -105,3 +105,4 @@ function getExtension(filePath: string): string {
   const parts = filePath.split(".");
   return parts.length > 1 ? parts[parts.length - 1] : "";
 }
+
