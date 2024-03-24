@@ -79,7 +79,7 @@ function execute(args: string[]): void {
     throw new Error(ERROR_MESSAGES.INVALID_FILE_TYPE);
   }
 
-  const filePath = args[imageArgIndex + 1]; 
+  const filePath = args[imageArgIndex + 1];
 
   verifyFile(filePath);
   console.log("Processing:", filePath);
@@ -105,5 +105,3 @@ function getExtension(filePath: string): string {
   const parts = filePath.split(".");
   return parts.length > 1 ? parts[parts.length - 1] : "";
 }
-
-
