@@ -65,6 +65,14 @@ if (cliArguments["image"]) {
   // TODO : implement
 }
 
+// Check to see if incompatible options --rotate-90d and--rotate-270d are
+// called together
+if (cliArguments["rotate-90d"] && cliArguments["rotate-180d"]) {
+  // post an error message and exit  
+  console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION)
+  process.exit(1);
+}
+
 //File verification
 function execute(args: string[]): void {
   const imageArgIndex = args.findIndex((arg) => arg.startsWith("-i"));
