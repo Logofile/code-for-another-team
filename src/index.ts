@@ -52,52 +52,53 @@ const cliArguments: any = command(process.argv)
   .epilog("copyright 2024 by Script Saviors").argv;
 
 if (cliArguments["image"]) {
-    // Check to see if incompatible options --rotate-90d and--rotate-270d are
-     // called together
-     if (cliArguments["rotate-90d"] && cliArguments["rotate-180d"]) {
-       // post an error message and exit  
-       console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION)
-       process.exit(1);
-     }
-   
-     // Check to see if incompatible options --rotate-180d and--rotate-270d are
-     // called together
-     if (cliArguments["rotate-180d"] && cliArguments["rotate-270d"]) {
-       // post an error message and exit  
-       console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION)
-       process.exit(1);
-     }
-   
-      // Check to see if incompatible options --rotate-90d and--rotate-270d are
-     // called together
-     if (cliArguments["rotate-90d"] && cliArguments["rotate-270d"]) {
-       // post an error message and exit  
-       console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION)
-       process.exit(1);
-     }
-   
-   // check to see if incompatible options --grayscale and --duotone are 
-     // called together
-     if(cliArguments["grayscale"] && cliArguments["duotone"]) {
-       console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE)
-       process.exit(1);
-     }
-   
-     // check to see if incompatible options --grayscale and --color are 
-     // called together
-     if(cliArguments["grayscale"] && cliArguments["color"]) {
-       console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE)
-       process.exit(1);
-     }
-   
-     // check to see if incompatible options --duotone and --color are 
-     // called together
-     if(cliArguments["duotone"] && cliArguments["color"]) {
-       console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE)
-       process.exit(1);
-     }
-     //console.debug("MOCK result");// TODO: remove debug code and implement feature
-   } else {
-     // TODO : implement
-   }
-   
+
+  //console.debug("MOCK result");// TODO: remove debug code and implement feature
+} else {
+  // TODO : implement
+}
+
+// Check to see if incompatible options --rotate-90d and--rotate-270d are
+// called together
+if (cliArguments["rotate-90d"] && cliArguments["rotate-180d"]) {
+  // post an error message and exit  
+  console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION)
+  process.exit(1);
+}
+
+// Check to see if incompatible options --rotate-180d and--rotate-270d are
+// called together
+if (cliArguments["rotate-180d"] && cliArguments["rotate-270d"]) {
+  // post an error message and exit  
+  console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION)
+  process.exit(1);
+}
+
+// Check to see if incompatible options --rotate-90d and--rotate-270d are
+// called together
+if (cliArguments["rotate-90d"] && cliArguments["rotate-270d"]) {
+  // post an error message and exit  
+  console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION)
+  process.exit(1);
+}
+
+// check to see if incompatible options --grayscale and --duotone are 
+// called together
+if (cliArguments["grayscale"] && cliArguments["duotone"]) {
+  console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE)
+  process.exit(1);
+}
+
+// check to see if incompatible options --grayscale and --color are 
+// called together
+if (cliArguments["grayscale"] && cliArguments["color"]) {
+  console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE)
+  process.exit(1);
+}
+
+// check to see if incompatible options --duotone and --color are 
+// called together
+if (cliArguments["duotone"] && cliArguments["color"]) {
+  console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE)
+  process.exit(1);
+}
