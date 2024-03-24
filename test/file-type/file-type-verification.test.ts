@@ -18,10 +18,10 @@ describe("File type verification", () => {
   describe("Fails when the filetype is not supported", () => {
     INVALID_FILES.forEach((filePath, index) => {
       it(`test point ${index + 1}`, (done) => {
-        execute([`-i ${filePath}`], (errorMessage) => {
+        execute([`-i ${filePath}`], (errorMessage, stdout, stderr) => {
           try {
             expect(
-              errorMessage.match(
+              stderr.match(
                 new RegExp(ERROR_MESSAGES.INVALID_FILE_TYPE, "i")
               )
             ).toBeTruthy();

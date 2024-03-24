@@ -14,9 +14,9 @@ const FILES = [
 describe("Error handling", () => {
   it("Fails when the file is not found or not accessible", (done) => {
     const { filePath, errorMessage } = FILES[0];
-    execute([`-i ${filePath}`], (errorMessage) => {
+    execute([`-i ${filePath}`], (errorMessage, stdout, stderr) => {
       try {
-        expect(errorMessage.match(new RegExp(errorMessage, "i"))).toBeTruthy();
+        expect(stderr.match(new RegExp(errorMessage, "i"))).toBeTruthy();
       } catch (error) {
         return done(error);
       }
