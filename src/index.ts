@@ -102,3 +102,15 @@ if (cliArguments["duotone"] && cliArguments["color"]) {
   console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE)
   process.exit(1);
 }
+
+// check to see if the resolution is too large
+
+// check to see if the resolution is a bad format
+
+// check to see if there's an invalid block id 0
+
+// check to see if there's an invalid block id 10
+
+// check to see if there's an invalid block count 0
+
+// check to see if there's an invalid block count 10
