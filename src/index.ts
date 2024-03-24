@@ -104,7 +104,7 @@ if (cliArguments["duotone"] && cliArguments["color"]) {
 }
 
 // check to see if the resolution is too large
-if (cliArguments["resolution 500x500"]) {
+if (cliArguments["Specify an output resolution (500 x 500)"]) {
   console.error(ERROR_MESSAGES.UNSUPPORTED_RESOLUTION)
   process.exit(1);
 }
