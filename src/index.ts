@@ -104,7 +104,10 @@ if (cliArguments["duotone"] && cliArguments["color"]) {
 }
 
 // check to see if the resolution is too large
-
+if (cliArguments["resolution 500x500"]) {
+  console.error(ERROR_MESSAGES.UNSUPPORTED_RESOLUTION)
+  process.exit(1);
+}
 // check to see if the resolution is a bad format
 
 // check to see if there's an invalid block id 0
