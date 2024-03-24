@@ -1,15 +1,12 @@
 // NPM Dependencies
 import command from "yargs";
 import { ERROR_MESSAGES } from "./constants";
-<<<<<<< HEAD
 
 // Setup command line
 console.error("does anybody see this err??")
 console.error("does anybody see this err??")
 console.log("does anybody see this??")
 console.log("does anybody see this??")
-=======
->>>>>>> 74986c4 (Add "helpful" changes to the other team's code. This will not be)
 
 // Setup command line
 const cliArguments: any = command(process.argv)
@@ -66,7 +63,14 @@ if (cliArguments["image"]) {
   // TODO : implement
 }
 
-<<<<<<< HEAD
+// Check to see if incompatible options --rotate-90d and--rotate-270d are
+// called together
+if (cliArguments["rotate-90d"] && cliArguments["rotate-180d"]) {
+  // post an error message and exit  
+  console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION)
+  process.exit(1);
+}
+
 //File verification
 function execute(args: string[]): void {
   const imageArgIndex = args.findIndex((arg) => arg.startsWith("-i"));
@@ -101,12 +105,5 @@ function getExtension(filePath: string): string {
   const parts = filePath.split(".");
   return parts.length > 1 ? parts[parts.length - 1] : "";
 }
-=======
-// Check to see if incompatible options --rotate-90d and--rotate-270d are
-// called together
-if (cliArguments["rotate-90d"] && cliArguments["rotate-180d"]) {
-  // post an error message and exit  
-  console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_ROTATION)
-  process.exit(1);
-}
->>>>>>> b497bb2 (Adds more of the contributed code)
+
+
