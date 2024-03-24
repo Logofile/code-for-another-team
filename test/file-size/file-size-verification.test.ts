@@ -10,10 +10,10 @@ describe("File size verification", () => {
   describe("Fails when the file size is too large", () => {
     FILES_TOO_LARGE.forEach((filePath, index) => {
       it(`test point ${index + 1}`, (done) => {
-        execute([`-i ${filePath}`], (errorMessage) => {
+        execute([`-i ${filePath}`], (errorMessage, stdout, stderr) => {
           try {
             expect(
-              errorMessage.match(new RegExp(ERROR_MESSAGES.FILE_TOO_LARGE, "i"))
+              stderr.match(new RegExp(ERROR_MESSAGES.FILE_TOO_LARGE, "i"))
             ).toBeTruthy();
           } catch (error) {
             return done(error);
