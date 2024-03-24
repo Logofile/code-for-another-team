@@ -1,5 +1,6 @@
 // NPM Dependencies
 import command from "yargs";
+import { ERROR_MESSAGES } from "./constants";
 
 // Setup command line
 const cliArguments: any = command(process.argv)
@@ -62,4 +63,39 @@ if (cliArguments["image"]) {
   //console.debug("MOCK result");// TODO: remove debug code and implement feature
 } else {
   // TODO : implement
+}
+
+//File verification
+function execute(args: string[]): void {
+  const imageArgIndex = args.findIndex((arg) => arg.startsWith("-i"));
+
+  if (imageArgIndex === -1) {
+    throw new Error(ERROR_MESSAGES.INVALID_FILE_TYPE);
+  }
+
+  const filePath = args[imageArgIndex + 1]; 
+
+  verifyFile(filePath);
+  console.log("Processing:", filePath);
+}
+
+function verifyFile(filePath: string): void {
+  if (!filePath) {
+    throw new Error(ERROR_MESSAGES.FILE_NOT_ACCESSIBLE);
+  }
+
+  if (!isSupportedFormat(filePath)) {
+    throw new Error(ERROR_MESSAGES.INVALID_FILE_TYPE);
+  }
+}
+
+function isSupportedFormat(filePath: string): boolean {
+  const extension = getExtension(filePath).toLowerCase();
+  const supportedExt = [".bmp"];
+  return supportedExt.includes(extension);
+}
+
+function getExtension(filePath: string): string {
+  const parts = filePath.split(".");
+  return parts.length > 1 ? parts[parts.length - 1] : "";
 }
