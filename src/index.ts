@@ -102,12 +102,44 @@ if (cliArguments["duotone"] && cliArguments["color"]) {
   console.error(ERROR_MESSAGES.INCOMPATIBLE_COMMANDS_PALETTE)
   process.exit(1);
 }
+function execute(args: string[]): void {
+  const imageArgIndex = args.findIndex((arg) => arg.startsWith("-i"));
+
+  if (imageArgIndex === -1) {
+    throw new Error(ERROR_MESSAGES.INVALID_FILE_TYPE);
+  }
+
+  const filePath = args[imageArgIndex + 1]; 
+
+  verifyFile(filePath);
+  console.log("Processing:", filePath);
+}
+
+function verifyFile(filePath: string): void {
+  if (!filePath) {
+    throw new Error(ERROR_MESSAGES.FILE_NOT_ACCESSIBLE);
+  }
+
+  if (!isSupportedFormat(filePath)) {
+    throw new Error(ERROR_MESSAGES.INVALID_FILE_TYPE);
+  }
+}
+
+function isSupportedFormat(filePath: string): boolean {
+  const extension = getExtension(filePath).toLowerCase();
+  const supportedExt = [".bmp"];
+  return supportedExt.includes(extension);
+}
+
+function getExtension(filePath: string): string {
+  const parts = filePath.split(".");
+  return parts.length > 1 ? parts[parts.length - 1] : "";
+}
 
 // check to see if the resolution is too large
-if (cliArguments["Specify an output resolution (500 x 500)"]) {
-  console.error(ERROR_MESSAGES.UNSUPPORTED_RESOLUTION)
-  process.exit(1);
-}
+
+// Exit with an error code
+
 // check to see if the resolution is a bad format
 
 // check to see if there's an invalid block id 0
